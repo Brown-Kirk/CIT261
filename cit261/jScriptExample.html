@@ -9,14 +9,20 @@
 	/*Input: user inputs a number
 	* Processing: Calculate the odd numbers together between 1 and the entered number
 	*/
-		function oddSum() {
+		function getValueInputs() {
 
-			var number = parseInt(document.getElementById('box').value);
+			var number1 = parseInt(document.getElementById('box1').value);
+			var number2 = parseInt(document.getElementById('box2').value);
+			oddSum(number1);
+		}
+
+		function oddSum(number) {
 			// If x is Not a Number or less than one or greater than 10
 			if (isNaN(number) || number < 1 || number > 100000) {
 					resultOutput = "Input not valid. Please enter a number between 1 an 100,000.";
 			} else {
 					var i = 1 ;
+					var valueList = [];
 					var result = 0;
 					var resultOutput;
 					if (number < 1 ) {
@@ -24,25 +30,28 @@
 					}
 						for (i = number ; i > 0; i--)
 							if (i % 2 != 0) {
+								valueList.push(i);
 								result = result + i;
+								valuesCount = valueList.length;
 					}
 
 		/* Output:  Display the sum result of adding the odd numbers from 1 to the entered number
 		*/
 					resultOutput = "The sum of all odd numbers between zero and " + number + " is " + result + "."
 				}
-
 				document.getElementById('outputdiv').innerHTML = resultOutput;
  			}
 	</script>
 
 </head>
 <body>
-	<h3>Type a number that is between 1 and 100,000 into the box below and click OK.</h3>
-	<input type="text" id="box" size="3" value="0"><br>
+	<h3>Type a number that is between 1 and 100,000 into each of the boxes below and click OK.</h3>
+	<input type="text" id="box1" size="3" value="0">
+	<input type="text" id="box2" size="3" value="0"><br>
 	<br>
-	<button type="button" onclick="oddSum()" >Sum it Up!</button><br>
+	<button type="button" onclick="getValueInputs()" >Sum it Up!</button><br>
 	<br>
 	<div id="outputdiv"></div>
+	<div id="outputdiv2"></div>
 </body>
 </html>
