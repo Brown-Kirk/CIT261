@@ -9,8 +9,8 @@
 	/*Input: user inputs a number
 	* Processing: Calculate the odd numbers together between 1 and the entered number
 	*/
+		var valueList = [];
 		function getValueInputs() {
-
 			var number = parseInt(document.getElementById('box1').value);
 			if (isNaN(number) || number < 1 || number > 100000) {
 					resultOutput = "Input not valid. Please enter a number between 1 an 100,000.";
@@ -22,7 +22,6 @@
 		function oddSum(number1) {
 			// If x is Not a Number or less than one or greater than 10
 					var i = 1 ;
-					var valueList = [];
 					var result = 0;
 					var resultOutput;
 					if (number1 < 1 ) {
@@ -36,7 +35,23 @@
 					*/
 				resultOutput = "The sum of all odd numbers between zero and " + number1 + " is " + result + "."
 				document.getElementById('outputdiv').innerHTML = resultOutput;
- 			}
+			}
+			function oddSumList(number1) {
+				// If x is Not a Number or less than one or greater than 10
+						var i = 1 ;
+						var result = 0;
+						var resultOutput;
+						if (number1 < 1 ) {
+								return 0;
+						}
+							for (i = number1 ; i > 0; i--)
+								if (i % 2 != 0) {
+									result = result + i;
+						}
+						/* Output:  Display the sum result of adding the odd numbers from 1 to the entered number
+						*/
+					return result;
+				}
 			function oddList(number2) {
 				var result;
 				for (i = 1 ; i <= number2; i++)
@@ -44,19 +59,30 @@
 						switch(i) {
 							case 1:
 								result = 1;
+								valueList[i] = oddSumList(i);
 								break;
 							case number2:
 								result = result + ", and " + i;
+								valueList[i] = oddSumList(i);
 								break;
 							case number2 - 1:
 								result = result + ", and " + i;
+								valueList[i] = oddSumList(i);
 								break;
 							default:
 								result = result + ", " + i;
+								valueList[i] = oddSumList(i);
 						}
 					}
 				resultOutput = "The odd numbers between 0 and " + number2 + " are: " + result + ".";
 				document.getElementById('outputdiv2').innerHTML = resultOutput;
+				var valueListOutput = "";
+				for(var i in valueList) {
+					if(i>0) {
+						valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
+					}
+				}
+				document.getElementById('outputdiv3').innerHTML = valueListOutput;
 			}
 	</script>
 
@@ -69,5 +95,6 @@
 	<br>
 	<div id="outputdiv"></div>
 	<div id="outputdiv2"></div>
+	<div id="outputdiv3"></div>
 </body>
 </html>
