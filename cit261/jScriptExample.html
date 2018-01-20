@@ -21,8 +21,6 @@
 		***More on arrays later
 		*/
 		var valueList = [];
-		var resultOutput;
-		var valueListOutput = "";
 		/*
 		***	Functions are a collection of actions that can be called from other areas of the script. These
 		*** can perform any actions any other area of the script can, but are reusable. So you can call the function
@@ -89,7 +87,7 @@
 							}
 					/* Output:  Display the sum result of adding the odd numbers from 1 to the entered number
 					*/
-				resultOutput = "The sum of all odd numbers between zero and " + number1 + " is " + result + "."
+				resultOutput = "The sum of all the odd numbers between zero and " + number1 + " is " + result + "."
 				document.getElementById('outputdiv').innerHTML = resultOutput;
 			}
 			function oddSumList(number1) {
@@ -154,9 +152,12 @@
 								result = result + ", " + i;
 								valueList[i] = oddSumList(i);
 						}
+					} else {
+						valueList[i] = valueList[i-1];
 					}
 				resultOutput = "The odd numbers between 0 and " + number2 + " are: " + result + ".";
 				document.getElementById('outputdiv2').innerHTML = resultOutput;
+				valueListOutput = ""
 				for(var i in valueList) {
 					if(i>0) {
 						valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
@@ -173,8 +174,8 @@
 	<br>
 	<button type="button" onclick="getValueInputs()" >Sum it Up!</button><br>
 	<br>
-	<div id="outputdiv"></div>
 	<div id="outputdiv2"></div>
 	<div id="outputdiv3"></div>
+	<div id="outputdiv"></div>
 </body>
 </html>
