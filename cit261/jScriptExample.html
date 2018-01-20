@@ -21,11 +21,15 @@
 		***More on arrays later
 		*/
 		var valueList = [];
+		var resultOutput;
+		var valueListOutput = "";
 		function getValueInputs() {
 			var number = parseInt(document.getElementById('box1').value);
 			if (isNaN(number) || number < 1 || number > 100000) {
 					resultOutput = "Input not valid. Please enter a number between 1 an 100,000.";
 					document.getElementById('outputdiv').innerHTML = resultOutput;
+					document.getElementById('outputdiv2').innerHTML = ""
+					document.getElementById('outputdiv3').innerHTML = "";
 					//exit();
 			} else {
 					oddSum(number);
@@ -36,7 +40,6 @@
 			// If x is Not a Number or less than one or greater than 10
 					var i = 1 ;
 					var result = 0;
-					var resultOutput;
 					if (number1 < 1 ) {
 							return 0;
 					}
@@ -53,7 +56,6 @@
 				// If x is Not a Number or less than one or greater than 10
 						var i = 1 ;
 						var result = 0;
-						var resultOutput;
 						if (number1 < 1 ) {
 								return 0;
 						}
@@ -89,7 +91,6 @@
 					}
 				resultOutput = "The odd numbers between 0 and " + number2 + " are: " + result + ".";
 				document.getElementById('outputdiv2').innerHTML = resultOutput;
-				var valueListOutput = "";
 				for(var i in valueList) {
 					if(i>0) {
 						valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
