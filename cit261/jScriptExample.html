@@ -23,8 +23,31 @@
 		var valueList = [];
 		var resultOutput;
 		var valueListOutput = "";
+		/*
+		***	Functions are a collection of actions that can be called from other areas of the script. These
+		*** can perform any actions any other area of the script can, but are reusable. So you can call the function
+		*** from other areas of the script, as many times as you want. In this case, the function "getValueInputs"
+		*** gets the value entered into a text box, then takes that value to perform additional actions such as
+		*** checking to see if it is a number, if it is between 1 and 100,000, and then passing it on to other functions.
+		*/
 		function getValueInputs() {
 			var number = parseInt(document.getElementById('box1').value);
+			/*
+			***Conditional Statements: Conditional statements define actions to take based upon the conditions present.
+			***These can take several forms
+			***		"if.. else"  - This statement checks to see if a condition is true. You can check for variables to be
+			***			a certain value, greater than or less than a certain value, or even what type of value it is.
+			***			In the example below, the code checks for 3 things and if all of them are true, it returns true.
+			***			The three things are: Is the value anything besides a number, is the value less than 1, is the value
+			***			greater than 100,000. As long as it meets any of these, the value is true. If any one of these is true,
+			***			it returns true. (You could put "&&" where "||" is to mean it has to meet ALL criteria.)
+			***			For example, the value "Bob" is not a number, so it would return true, and thus proceed to the true
+			***			actions where it says the input is not valid. "-500" is less than 1, so it would do the same. 150,000
+			***			is greater than 100000, so it would also. However, "50" causes it to return false because it does Not
+			***			meet any of the criteria. In this case, we proceed with the "oddSum()" function. We could put "else if"
+			***			where "else" is and add in another condition, if we wanted. There can be as many "else if" as you wanted
+			***			but only 1 if and 1 else.
+			*/
 			if (isNaN(number) || number < 1 || number > 100000) {
 					resultOutput = "Input not valid. Please enter a number between 1 an 100,000.";
 					document.getElementById('outputdiv').innerHTML = resultOutput;
@@ -32,10 +55,20 @@
 					document.getElementById('outputdiv3').innerHTML = "";
 					//exit();
 			} else {
+					/*
+					***	Functions can also have values passed into them. These are called "parameters". In the case of the
+					*** functions below, the "number" variable is passed into the "oddsum" function and becomes a variable in
+					*** that function.
+					*/
 					oddSum(number);
 					oddList(number);
 			}
 		}
+		/*
+		***	In the function below, it recives the "number" variable from above, and presents it to internal to the function
+		*** as the variable "number1". In my case, this I change the name of the variable so that I can more easily keep
+		*** track of what the variable is to be used for.
+		*/
 		function oddSum(number1) {
 			// If x is Not a Number or less than one or greater than 10
 					var i = 1 ;
@@ -43,10 +76,17 @@
 					if (number1 < 1 ) {
 							return 0;
 					}
+						/*
+						***	Loops are used to process multiple values through a set of actions. In this example, it starts out with
+						*** the variable "i" (a common placeholder variable) equaling the value of the "number1" variable (the "i = number1"
+						***	part). It iterates through the "if" block, then decreases the value of "i" by 1, and does it again (this is the
+						***	"i--" part). It repeats this process over and over, until the value of "i" is greater than 0 (this is the
+						***	"i > 0" part). Then it proceeds on to the rest of the function.
+						*/
 						for (i = number1 ; i > 0; i--)
 							if (i % 2 != 0) {
 								result = result + i;
-					}
+							}
 					/* Output:  Display the sum result of adding the odd numbers from 1 to the entered number
 					*/
 				resultOutput = "The sum of all odd numbers between zero and " + number1 + " is " + result + "."
@@ -70,10 +110,36 @@
 			function oddList(number2) {
 				var result;
 				for (i = 1 ; i < number2; i++)
+					/*
+					***	A switch statement is similar to an if...else statement. In this case, you define a value (the
+					***	value inside the parentheses), and then it proceeds to each "case" line until it finds one it
+					***	matches. If it doesn't find a case it matches, it will perform the actions inside the "default"
+					***	case.
+					*/
 					if (i % 2 != 0) {
 						switch(i) {
 							case 1:
 								result = 1;
+								/*
+								***	Remember when we mentioned "associative arrays" earlier? Here they are! This switch statements
+								*** processes through the value of "i" each time it goes through the for loop. Each time, it associates
+								*** the value of "i" along with the sum of the odd numbers between 0 and i. So, if "i" is 9, the odd
+								*** numbers between 0 and 9 are 1, 3, 5, 7, and 9. Add those together and it equals 25. So,it associates
+								*** the value 9 with the value 25. To put it visually, you could picture a table like this if we added
+								*** the same sums to all numbers between 0 and 9:
+								*** 0	0
+								***	1	1
+								***	2	2
+								***	3	4
+								***	4	4
+								***	5	9
+								***	6	9
+								***	7	16
+								***	8	16
+								***	9	25
+								*** Arrays are very similar, but in the table above would only have 1 value per row, if pictured the same
+								*** way.
+								*/
 								valueList[i] = oddSumList(i);
 								break;
 							case number2:
