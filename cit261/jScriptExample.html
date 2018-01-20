@@ -9,11 +9,24 @@
 	/*Input: user inputs a number
 	* Processing: Calculate the odd numbers together between 1 and the entered number
 	*/
+		/*
+		***Variables: Variables are placeholders. They can be numbers, strings, objects, boolean, null, or undefined.
+		***Variables are always defined by putting "var" in front of the variable name.
+		***To assign a value to a variable, you put an "=" followed by the value.
+		***Initially, a variable can be declared and a value assigned, or it can be declared without a value.
+		***Declaring without a value actually assigns the value "undefined".
+		***Example "var variableName;" creates the variable "variableName" and assigns the value "undefined".
+		***Example "var variableName = 12" creates the variable "variableName" and assigns the numerical value of 12.
+		***In the example below, "valueList" is assigned the value "undefined", but specifies that this is an array.
+		***More on arrays later
+		*/
 		var valueList = [];
 		function getValueInputs() {
 			var number = parseInt(document.getElementById('box1').value);
 			if (isNaN(number) || number < 1 || number > 100000) {
 					resultOutput = "Input not valid. Please enter a number between 1 an 100,000.";
+					document.getElementById('outputdiv').innerHTML = resultOutput;
+					//exit();
 			} else {
 					oddSum(number);
 					oddList(number);
