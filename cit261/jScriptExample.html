@@ -20,7 +20,6 @@
 		***In the example below, "valueList" is assigned the value "undefined", but specifies that this is an array.
 		***More on arrays later
 		*/
-		var valueList = [];
 		/*
 		***	Functions are a collection of actions that can be called from other areas of the script. These
 		*** can perform any actions any other area of the script can, but are reusable. So you can call the function
@@ -107,7 +106,8 @@
 				}
 			function oddList(number2) {
 				var result;
-				for (i = 1 ; i < number2; i++)
+				var valueList = [];
+				for (i = 1 ; i <= number2; i++)
 					/*
 					***	A switch statement is similar to an if...else statement. In this case, you define a value (the
 					***	value inside the parentheses), and then it proceeds to each "case" line until it finds one it
@@ -153,13 +153,15 @@
 								valueList[i] = oddSumList(i);
 						}
 					} else {
-						valueList[i] = valueList[i-1];
+						if (i < number2) {
+							valueList[i] = valueList[i-1];
+						}
 					}
 				resultOutput = "The odd numbers between 0 and " + number2 + " are: " + result + ".";
 				document.getElementById('outputdiv2').innerHTML = resultOutput;
 				valueListOutput = ""
 				for(var i in valueList) {
-					if(i>0) {
+					if(i > 0) {
 						valueListOutput = valueListOutput + "The sum of all the odd numbers between zero and " + i + " is " + valueList[i] + "." + '<br>';
 					}
 				}
@@ -174,8 +176,8 @@
 	<br>
 	<button type="button" onclick="getValueInputs()" >Sum it Up!</button><br>
 	<br>
-	<div id="outputdiv2"></div>
+	<div id="outputdiv"></div><br>
+	<div id="outputdiv2"></div><br>
 	<div id="outputdiv3"></div>
-	<div id="outputdiv"></div>
 </body>
 </html>
